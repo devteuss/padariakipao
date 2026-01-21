@@ -1,0 +1,195 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Padaria Ki Pão • Franquia Nacional</title>
+
+  <link rel="icon" href="favicon-kipao.png" type="image/png">
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
+
+  <style>
+    :root{
+      --marrom:#5a2e1f;
+      --marrom-escuro:#24110a;
+      --bege:#f6efe6;
+      --dourado:#c9a24d;
+      --verde:#25d366;
+      --cinza:#f3f3f3;
+    }
+
+    *{margin:0;padding:0;box-sizing:border-box;font-family:'Poppins',sans-serif}
+    body{background:var(--bege);color:#333;scroll-behavior:smooth}
+    a{text-decoration:none;color:inherit}
+
+    /* ================= LOADER ================= */
+    #loader{
+      position:fixed;
+      inset:0;
+      background:var(--marrom-escuro);
+      display:flex;
+      align-items:center;
+      justify-content:center;
+      z-index:2000;
+    }
+    #loader span{color:#fff;font-size:1.4rem;letter-spacing:2px;animation:pulse 1.5s infinite}
+    @keyframes pulse{50%{opacity:.4}}
+
+    /* ================= WHATSAPP ================= */
+    .whatsapp{
+      position:fixed;bottom:25px;right:25px;width:72px;height:72px;
+      background:var(--verde);border-radius:50%;display:flex;align-items:center;justify-content:center;
+      font-size:34px;box-shadow:0 20px 45px rgba(0,0,0,.4);z-index:999;transition:.3s
+    }
+    .whatsapp:hover{transform:scale(1.12)}
+
+    /* ================= HEADER ================= */
+    header{
+      height:100vh;
+      background:linear-gradient(rgba(0,0,0,.75),rgba(0,0,0,.75)),url('https://images.unsplash.com/photo-1608198095834-91e07e1f6b44') center/cover no-repeat;
+      display:flex;flex-direction:column;justify-content:center;align-items:center;text-align:center;color:#fff
+    }
+
+    header img{width:210px;margin-bottom:25px;animation:float 4s ease-in-out infinite}
+    @keyframes float{50%{transform:translateY(-14px)}}
+
+    header h1{font-size:3.6rem}
+    header p{font-size:1.3rem;margin:15px 0 40px}
+
+    .actions{display:flex;gap:25px;flex-wrap:wrap;justify-content:center}
+    .btn{padding:18px 36px;border-radius:60px;font-weight:600;font-size:1.05rem;border:none;cursor:pointer;transition:.4s;display:flex;align-items:center;gap:10px}
+    .btn-primary{background:var(--verde);color:#fff}
+    .btn-primary:hover{transform:translateY(-8px)}
+    .btn-outline{background:transparent;border:2px solid var(--dourado);color:#fff}
+    .btn-outline:hover{background:var(--dourado);color:#000}
+
+    section{padding:120px 10%}
+    .title{text-align:center;font-size:2.8rem;color:var(--marrom);margin-bottom:60px}
+
+    /* ================= SOBRE ================= */
+    .about{display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:50px;align-items:center}
+    .about img{width:100%;border-radius:35px}
+
+    /* ================= CARDÁPIO ================= */
+    .filters{display:flex;gap:15px;justify-content:center;margin-bottom:40px;flex-wrap:wrap}
+    .filter-btn{padding:10px 22px;border-radius:30px;background:#fff;border:2px solid var(--marrom);cursor:pointer}
+    .filter-btn.active,.filter-btn:hover{background:var(--marrom);color:#fff}
+
+    .menu{display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:35px}
+    .item{background:#fff;border-radius:30px;overflow:hidden;box-shadow:0 20px 45px rgba(0,0,0,.18);transition:.4s}
+    .item:hover{transform:translateY(-15px)}
+    .item img{width:100%;height:210px;object-fit:cover}
+    .item div{padding:25px}
+    .price{color:var(--dourado);font-weight:600;margin:10px 0}
+    .order{display:inline-block;margin-top:12px;padding:10px 20px;background:var(--verde);color:#fff;border-radius:25px;font-size:.9rem}
+
+    /* ================= DEPOIMENTOS ================= */
+    .testimonials{display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:30px}
+    .test{background:#fff;padding:30px;border-radius:30px;box-shadow:0 15px 35px rgba(0,0,0,.15)}
+
+    /* ================= INSTAGRAM ================= */
+    .insta{display:grid;grid-template-columns:repeat(auto-fit,minmax(180px,1fr));gap:20px}
+    .insta div{background:var(--cinza);height:180px;border-radius:20px;display:flex;align-items:center;justify-content:center;font-weight:600}
+
+    /* ================= INFO ================= */
+    .info{background:linear-gradient(135deg,var(--marrom),var(--marrom-escuro));color:#fff;border-radius:40px;padding:70px;display:grid;grid-template-columns:repeat(auto-fit,minmax(250px,1fr));gap:35px}
+    .info h4{color:var(--dourado)}
+
+    footer{background:var(--marrom-escuro);color:#fff;text-align:center;padding:40px;font-size:.9rem}
+
+    /* ================= SCROLL ================= */
+    .reveal{opacity:0;transform:translateY(70px);transition:1s}
+    .reveal.active{opacity:1;transform:translateY(0)}
+
+  </style>
+</head>
+<body>
+
+<div id="loader"><span>KI PÃO</span></div>
+<a class="whatsapp" href="https://wa.me/5518996955697" target="_blank">💬</a>
+
+<header>
+  <img src="logo-kipao-moderna.png" alt="Padaria Ki Pão">
+  <h1>Padaria Ki Pão</h1>
+  <p>Tradição, qualidade e sabor • Desde cedo com você</p>
+  <div class="actions">
+    <a href="https://wa.me/5518996955697" target="_blank"><button class="btn btn-primary">Pedir no WhatsApp</button></a>
+    <a href="#menu"><button class="btn btn-outline">Ver Cardápio</button></a>
+  </div>
+</header>
+
+<section class="reveal">
+  <h2 class="title">Sobre a Ki Pão</h2>
+  <div class="about">
+    <div>
+      <p>Somos referência em qualidade, atendimento e tradição. A Padaria Ki Pão nasce com o compromisso de entregar produtos frescos, atendimento humanizado e padrão de franquia nacional.</p>
+    </div>
+    <img src="https://images.unsplash.com/photo-1608198095834-91e07e1f6b44">
+  </div>
+</section>
+
+<section id="menu" class="reveal">
+  <h2 class="title">Cardápio</h2>
+  <div class="filters">
+    <button class="filter-btn active" onclick="filter('all')">Todos</button>
+    <button class="filter-btn" onclick="filter('pao')">Pães</button>
+    <button class="filter-btn" onclick="filter('doce')">Doces</button>
+    <button class="filter-btn" onclick="filter('salgado')">Salgados</button>
+  </div>
+  <div class="menu">
+    <div class="item pao"><img src="https://images.unsplash.com/photo-1549931319-a545dcf3bc73"><div><h3>Pão Francês</h3><p class="price">R$ 0,80</p><a class="order" href="https://wa.me/5518996955697">Pedir</a></div></div>
+    <div class="item doce"><img src="https://images.unsplash.com/photo-1587241321921-91a834d6d191"><div><h3>Bolo Caseiro</h3><p class="price">R$ 15,00</p><a class="order" href="https://wa.me/5518996955697">Pedir</a></div></div>
+    <div class="item salgado"><img src="https://images.unsplash.com/photo-1606312619344-86f38c5a6b38"><div><h3>Coxinha</h3><p class="price">R$ 6,00</p><a class="order" href="https://wa.me/5518996955697">Pedir</a></div></div>
+  </div>
+</section>
+
+<section class="reveal">
+  <h2 class="title">Depoimentos</h2>
+  <div class="testimonials">
+    <div class="test">⭐️⭐️⭐️⭐️⭐️<br>"A melhor padaria da cidade"</div>
+    <div class="test">⭐️⭐️⭐️⭐️⭐️<br>"Qualidade absurda"</div>
+    <div class="test">⭐️⭐️⭐️⭐️⭐️<br>"Atendimento padrão franquia"</div>
+  </div>
+</section>
+
+<section class="reveal">
+  <h2 class="title">Instagram</h2>
+  <div class="insta">
+    <div>@kipao</div><div>@kipao</div><div>@kipao</div><div>@kipao</div>
+  </div>
+</section>
+
+<section class="reveal">
+  <h2 class="title">Informações</h2>
+  <div class="info">
+    <div><h4>📍 Endereço</h4><p>R. Adelino Duarte, 490<br>Quatá - SP</p></div>
+    <div><h4>⏰ Horário</h4><p>Todos os dias<br>05:00 às 22:00</p></div>
+    <div><h4>📲 WhatsApp</h4><p>(18) 99695-5697</p></div>
+  </div>
+</section>
+
+<footer>
+  © 2026 Padaria Ki Pão • Estrutura de Franquia Nacional
+</footer>
+
+<script>
+  window.onload=()=>document.getElementById('loader').style.display='none'
+
+  const reveals=document.querySelectorAll('.reveal')
+  window.addEventListener('scroll',()=>{
+    reveals.forEach(el=>{
+      if(el.getBoundingClientRect().top<window.innerHeight-120){el.classList.add('active')}
+    })
+  })
+
+  function filter(cat){
+    document.querySelectorAll('.filter-btn').forEach(b=>b.classList.remove('active'))
+    event.target.classList.add('active')
+    document.querySelectorAll('.item').forEach(i=>{
+      i.style.display=(cat==='all'||i.classList.contains(cat))?'block':'none'
+    })
+  }
+</script>
+
+</body>
+</html>
